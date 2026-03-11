@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary:       #0D7377;
+  --color-primary-dark:  #0A5C5F;
+  --color-primary-light: #E6F4F4;
+  --color-accent:        #14A085;
+  --color-dark:          #1A1A2E;
+  --color-muted:         #6B7280;
+  --color-offwhite:      #F9FAFB;
+
+  --font-sans:    var(--font-inter);
+  --font-heading: var(--font-playfair);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-playfair);
+  }
+
+  /* Light mode */
+  :root {
+    --bg:          255 255 255;
+    --bg-subtle:   249 250 251;
+    --text:        17 24 39;
+    --text-muted:  107 114 128;
+    --border:      229 231 235;
+    --card:        255 255 255;
+  }
+
+  /* Dark mode */
+  .dark {
+    --bg:          10 10 20;
+    --bg-subtle:   17 24 39;
+    --text:        243 244 246;
+    --text-muted:  156 163 175;
+    --border:      31 41 55;
+    --card:        17 24 39;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200 cursor-pointer;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+
+  /* Semantic surface classes — use these on cards, sections, pages */
+  .bg-surface       { background-color: rgb(var(--bg)); }
+  .bg-surface-subtle{ background-color: rgb(var(--bg-subtle)); }
+  .text-body        { color: rgb(var(--text)); }
+  .text-body-muted  { color: rgb(var(--text-muted)); }
+  .border-surface   { border-color: rgb(var(--border)); }
+  .bg-card          { background-color: rgb(var(--card)); }
+}
